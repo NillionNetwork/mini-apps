@@ -1,0 +1,95 @@
+# App Showcase Gallery Changelog
+
+### Project Structure Setup
+- Created initial project directory structure
+- Set up base Next.js directories (/src, /public, /src/app)
+
+### Configuration Files
+- Added package.json with Next.js, React, Framer Motion, and Tailwind CSS dependencies
+- Created tsconfig.json for TypeScript configuration
+- Set up tailwind.config.js with custom color scheme
+- Added postcss.config.js for Tailwind CSS processing
+- Added global CSS file with Tailwind imports
+
+### Data and Types
+- Created sample apps-data.json with 8 example applications
+- Added TypeScript interfaces for app data types
+
+### Core Components
+- Implemented Next.js app layout (layout.tsx)
+- Created main page component (page.tsx) with:
+  - App data fetching
+  - Category filtering
+  - Selected app state management
+- Created type definitions file (types.ts)
+
+### Implemented Components
+- CategorySidebar (for filtering apps by category)
+- AppGallery (main Cover Flow gallery with Framer Motion animations)
+- AppDetails (for displaying selected app information)
+
+### Project Documentation
+- Added README.md with project overview and setup instructions
+- Added next.config.js for image domain configuration
+- Added this changelog.txt to track project development
+
+## iTunes Interface Overhaul - April 11, 2025
+
+### Color and Texture Updates
+- Replaced white sidebar with blue gradient sidebar like classic iTunes
+- Added metallic silver gradients to top and bottom toolbars
+- Changed main content area to black background for authentic iTunes look
+- Enhanced reflection effects with more pronounced opacity and blur
+- Added subtle grid pattern to the floor for depth
+
+### Layout Adjustments
+- Added song-like information bar at the top showing current app and fake progress
+- Implemented a data table below the Cover Flow view with iTunes-like styling
+- Removed separate app details component in favor of the table view
+- Added category sections in sidebar with iTunes-style organization
+- Added status bar at the bottom showing number of items
+- Integrated dynamic categories into the sidebar
+
+### Component Changes
+- Completely redesigned ITunesFrame component to match iTunes interface
+- Created new AppTable component for iTunes-style list view
+- Enhanced AppGallery with more accurate Cover Flow styling and reflections
+- Added slider control beneath Cover Flow for navigation
+- Improved 3D perspective and rotation angles to better match iTunes
+- Added playlists section to sidebar for complete iTunes look
+
+## Keyboard Navigation - April 11, 2025
+
+### Interaction Improvements
+- Added arrow key support for navigating through the Cover Flow gallery
+- Left arrow key navigates to the previous app
+- Right arrow key navigates to the next app
+- Synchronized keyboard navigation with the UI state
+- Implemented clean event handling with proper cleanup
+
+## UI Refinements - April 11, 2025
+
+### Visual Improvements
+- Increased gallery height to provide more room for the Cover Flow effect
+- Added spacing buffer below gallery content for better slider positioning
+- Adjusted slider position to prevent overlap with album covers
+- Fine-tuned component dimensions for better visual appearance
+
+## Content and Table Updates - April 11, 2025
+
+### Data and Functionality Improvements
+- Added 5 new example apps to the sample data (total of 13 apps)
+- Implemented vertical scrolling in the app table for better navigation
+- Added sticky header to the app table that remains visible during scrolling
+- Fixed table height to maintain consistent layout regardless of item count
+- Styled the scrollbar to match the slider color for visual consistency
+- Updated item count display to handle singular/plural text correctly
+- Improved table styling for better visual consistency
+
+## Visual Refinements - April 11, 2025
+
+### UI Enhancements
+- Replaced border with modern, layered shadow effect for more refined appearance
+- Implemented realistic depth effect with multiple shadow layers
+- Increased vertical margin to better showcase the new shadow effect
+- Refined overall window appearance for a more contemporary look
