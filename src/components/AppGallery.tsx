@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, useDragControls, useMotionValue } from 'framer-motion';
 import { AppData } from './types';
 
@@ -100,60 +101,70 @@ export default function AppGallery({
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 onClick={() => handleItemClick(index)}
               >
-                <div
-                  className='relative rounded overflow-hidden transition-shadow'
-                  style={{
-                    width: '250px',
-                    height: '250px',
-                    boxShadow:
-                      index === activeIndex
-                        ? '0 10px 25px -5px rgba(0, 0, 0, 0.8), 0 10px 20px -5px rgba(0, 0, 0, 0.6)'
-                        : '0 4px 6px -1px rgba(0, 0, 0, 0.6)',
-                  }}
+                <Link
+                  href={app.demoUrl}
+                  target='_blank'
+                  rel='noopener noreferrer'
                 >
-                  <Image
-                    src={app.imageUrl || `/emptySong.png`}
-                    alt={app.name}
-                    fill
-                    className='object-cover'
-                    sizes='250px'
-                    priority={Math.abs(distance) < 2}
-                  />
-
-                  {/* Enhanced Reflection effect - more pronounced */}
                   <div
-                    className='absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-white to-transparent opacity-25 transform scale-y-[-1] origin-bottom backdrop-blur-sm'
+                    className='relative rounded overflow-hidden transition-shadow'
                     style={{
-                      maskImage:
-                        'linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.3) 50%, rgba(0,0,0,0))',
-                      WebkitMaskImage:
-                        'linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.3) 50%, rgba(0,0,0,0))',
+                      width: '250px',
+                      height: '250px',
+                      boxShadow:
+                        index === activeIndex
+                          ? '0 10px 25px -5px rgba(0, 0, 0, 0.8), 0 10px 20px -5px rgba(0, 0, 0, 0.6)'
+                          : '0 4px 6px -1px rgba(0, 0, 0, 0.6)',
                     }}
                   >
-                    {/* Reflection image */}
-                    <div className='w-full h-full relative transform scale-y-[-1]'>
-                      <Image
-                        src={app.imageUrl || `/emptySong.png`}
-                        alt=''
-                        fill
-                        className='object-cover opacity-70'
-                        sizes='250px'
-                      />
+                    <Image
+                      src={app.imageUrl || `/emptySong.png`}
+                      alt={app.name}
+                      fill
+                      className='object-cover'
+                      sizes='250px'
+                      priority={Math.abs(distance) < 2}
+                    />
+
+                    {/* Enhanced Reflection effect - more pronounced */}
+                    <div
+                      className='absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-white to-transparent opacity-25 transform scale-y-[-1] origin-bottom backdrop-blur-sm'
+                      style={{
+                        maskImage:
+                          'linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.3) 50%, rgba(0,0,0,0))',
+                        WebkitMaskImage:
+                          'linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.3) 50%, rgba(0,0,0,0))',
+                      }}
+                    >
+                      {/* Reflection image */}
+                      <div className='w-full h-full relative transform scale-y-[-1]'>
+                        <Image
+                          src={
+                            app.imageUrl !== null
+                              ? app.imageUrl
+                              : `/emptySong.png`
+                          }
+                          alt=''
+                          fill
+                          className='object-cover opacity-70'
+                          sizes='250px'
+                        />
+                      </div>
+                    </div>
+
+                    {/* Overlay for non-active items to make them less prominent */}
+                    {index !== activeIndex && (
+                      <div className='absolute inset-0 bg-black bg-opacity-50' />
+                    )}
+
+                    {/* App name overlay at bottom */}
+                    <div className='absolute bottom-0 inset-x-0 bg-black bg-opacity-70 p-3'>
+                      <h3 className='text-white font-medium text-center truncate'>
+                        {app.name}
+                      </h3>
                     </div>
                   </div>
-
-                  {/* Overlay for non-active items to make them less prominent */}
-                  {index !== activeIndex && (
-                    <div className='absolute inset-0 bg-black bg-opacity-50' />
-                  )}
-
-                  {/* App name overlay at bottom */}
-                  <div className='absolute bottom-0 inset-x-0 bg-black bg-opacity-70 p-3'>
-                    <h3 className='text-white font-medium text-center truncate'>
-                      {app.name}
-                    </h3>
-                  </div>
-                </div>
+                </Link>
               </motion.div>
             );
           })}

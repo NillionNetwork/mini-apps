@@ -4,7 +4,7 @@ export interface AppData {
   category: string;
   description: string;
   imageUrl: string;
-  demoUrl: string | null;
+  demoUrl: string;
   githubUrl: string | null;
 }
 
