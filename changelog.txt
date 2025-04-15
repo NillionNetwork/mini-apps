@@ -96,6 +96,7 @@
 
 
 ## ToDO later
+- [ ] Tidy code / component breakout
 - [ ] Creators
 - [ ] MultiCategory + Hackathon events
 - [ ] Description?

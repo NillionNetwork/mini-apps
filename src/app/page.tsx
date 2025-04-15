@@ -1,3 +1,4 @@
+//app/page.index.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -102,6 +103,7 @@ export default function Home() {
         categories={categories}
         selectedCategory={selectedCategory}
         onSelectCategory={setSelectedCategory}
+        editorMode={false}
         totalItems={filteredApps.length}
       >
         {isLoading ? (
@@ -128,27 +130,34 @@ export default function Home() {
           </div>
         )}
       </ITunesFrame>
+
       <div className='flex flex-col items-center justify-center'>
-        <p className='text-center text-gray-500 text-sm'>
-          Made by:{' '}
+        <div className='flex'>
+          <p className='text-center text-gray-500 text-sm mr-4'>Home</p>
+          <p className='text-center text-gray-500 text-sm'>|</p>
+          <p className='text-center text-gray-500 text-sm mx-4 '>Create</p>
+          <p className='text-center text-gray-500 text-sm'>|</p>
           <a
-            className='underline mr-2'
-            href='https://x.com/crypblizz'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            crypblizz
-          </a>
-          |
-          <a
-            className='underline ml-2'
+            className='text-center text-gray-500 text-sm underline ml-4'
             href='https://github.com/NillionNetwork/mini-apps'
             target='_blank'
             rel='noopener noreferrer'
           >
             Github
           </a>
-        </p>
+          <p className='text-center text-gray-500 text-sm ml-4 '>|</p>
+          <p className='text-center text-gray-500 text-sm ml-4'>
+            Made by:{' '}
+            <a
+              className='underline mr-2'
+              href='https://x.com/crypblizz'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              crypblizz
+            </a>
+          </p>
+        </div>
       </div>
     </>
   );

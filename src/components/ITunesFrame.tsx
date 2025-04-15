@@ -11,6 +11,7 @@ interface ITunesFrameProps {
   };
   categories?: Category[];
   selectedCategory: string | null;
+  editorMode?: boolean;
   onSelectCategory: (category: string | null) => void;
   totalItems: number;
 }
@@ -20,6 +21,7 @@ export default function ITunesFrame({
   currentApp,
   categories = [],
   selectedCategory,
+  editorMode,
   onSelectCategory,
   totalItems = 0,
 }: ITunesFrameProps) {
@@ -50,53 +52,53 @@ export default function ITunesFrame({
         <div className='flex-1 text-center text-gray-700 font-medium'>
           Nillion Mini Apps
         </div>
-
-        {/* Search field */}
       </div>
 
       {/* Main content area with sidebar and content */}
       <div className='flex'>
         {/* Blue sidebar - like iTunes */}
-        <div className='w-64 bg-[#D3DDE6] text-white p-2 hidden md:block'>
-          <div className='mb-6'>
-            <h3 className='text-xs font-semibold text-[#798592] px-2 mb-2'>
-              LIBRARY
-            </h3>
-            <div className='font-medium text-sm space-y-1'>
-              <div
-                className={`px-2 py-1 ${
-                  selectedCategory === null
-                    ? 'bg-blue-600 text-white'
-                    : 'hover:bg-blue-400 text-black'
-                } rounded cursor-pointer`}
-                onClick={() => onSelectCategory(null)}
-              >
-                All Apps
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 className='text-xs font-semibold text-[#798592] px-2 mb-2'>
-              CATEGORIES
-            </h3>
-            <div className='font-medium text-sm space-y-1 overflow-y-auto'>
-              {categories.map((category) => (
+        {editorMode === false && (
+          <div className='w-64 bg-[#D3DDE6] text-white p-2 hidden md:block'>
+            <div className='mb-6'>
+              <h3 className='text-xs font-semibold text-[#798592] px-2 mb-2'>
+                LIBRARY
+              </h3>
+              <div className='font-medium text-sm space-y-1'>
                 <div
-                  key={category}
                   className={`px-2 py-1 ${
-                    selectedCategory === category
+                    selectedCategory === null
                       ? 'bg-blue-600 text-white'
                       : 'hover:bg-blue-400 text-black'
                   } rounded cursor-pointer`}
-                  onClick={() => onSelectCategory(category)}
+                  onClick={() => onSelectCategory(null)}
                 >
-                  {category}
+                  All Apps
                 </div>
-              ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className='text-xs font-semibold text-[#798592] px-2 mb-2'>
+                CATEGORIES
+              </h3>
+              <div className='font-medium text-sm space-y-1 overflow-y-auto'>
+                {categories.map((category) => (
+                  <div
+                    key={category}
+                    className={`px-2 py-1 ${
+                      selectedCategory === category
+                        ? 'bg-blue-600 text-white'
+                        : 'hover:bg-blue-400 text-black'
+                    } rounded cursor-pointer`}
+                    onClick={() => onSelectCategory(category)}
+                  >
+                    {category}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Main content area */}
         <div className='flex-1 bg-black'>{children}</div>
