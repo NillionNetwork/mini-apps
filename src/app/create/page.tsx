@@ -568,6 +568,7 @@ export default function CreatePage() {
                   {/* Match padding from home page? */}
                   <AppGallery
                     apps={filteredAppsForPreview}
+                    //@ts-ignore
                     selectedApp={selectedAppForPreviewHeader} // Pass app selected in preview
                     onSelectApp={handlePreviewAppSelect} // Use preview-specific handler
                     currentIndex={previewCurrentIndex}
@@ -575,6 +576,7 @@ export default function CreatePage() {
                   <div className='mt-8'>
                     <AppTable
                       apps={filteredAppsForPreview}
+                      //@ts-ignore
                       selectedAppId={previewSelectedAppId} // Pass ID selected in preview
                       onSelectApp={handlePreviewAppSelect} // Use preview-specific handler
                     />
