@@ -65,7 +65,7 @@ export default function AppGallery({
   return (
     <div
       ref={containerRef}
-      className='relative h-96 md:h-[22rem] overflow-hidden rounded-lg'
+      className='relative h-96 md:h-[22rem] overflow-hidden rounded-lg overflow-y-auto max-h-screen'
     >
       {/* Reflection floor - iTunes style with enhanced reflections */}
       <div className='absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-gray-900 to-transparent opacity-60 pointer-events-none z-0' />
