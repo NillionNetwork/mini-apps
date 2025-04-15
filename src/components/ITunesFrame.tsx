@@ -24,8 +24,8 @@ export default function ITunesFrame({
   totalItems = 0,
 }: ITunesFrameProps) {
   return (
-    <div 
-      className="w-full max-w-6xl mx-auto my-12 overflow-hidden rounded-lg"
+    <div
+      className='w-full max-w-6xl mx-auto my-12 overflow-hidden rounded-lg'
       style={{
         boxShadow: `
           0 1px 2px rgba(0, 0, 0, 0.07), 
@@ -36,12 +36,12 @@ export default function ITunesFrame({
           0 32px 64px rgba(0, 0, 0, 0.15)
         `,
         transform: 'translateY(0)',
-        transition: 'transform 0.2s, box-shadow 0.2s'
+        transition: 'transform 0.2s, box-shadow 0.2s',
       }}
     >
       {/* iTunes-like silver metallic header with controls */}
       <div className='bg-gradient-to-b from-gray-300 to-gray-400 px-4 py-2 border-b border-gray-500 flex items-center'>
-        <div className='flex space-x-2 mr-4'>
+        <div className='flex space-x-2'>
           <div className='w-3 h-3 rounded-full bg-red-500 border border-red-600'></div>
           <div className='w-3 h-3 rounded-full bg-yellow-400 border border-yellow-500'></div>
           <div className='w-3 h-3 rounded-full bg-green-400 border border-green-500'></div>
@@ -57,7 +57,7 @@ export default function ITunesFrame({
       {/* Main content area with sidebar and content */}
       <div className='flex'>
         {/* Blue sidebar - like iTunes */}
-        <div className='w-64 bg-[#D3DDE6] text-white p-2'>
+        <div className='w-64 bg-[#D3DDE6] text-white p-2 hidden md:block'>
           <div className='mb-6'>
             <h3 className='text-xs font-semibold text-[#798592] px-2 mb-2'>
               LIBRARY

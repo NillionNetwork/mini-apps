@@ -1,5 +1,16 @@
 [
   {
+    "id": "nillion-website",
+    "name": "Nillion",
+    "category": "Consumer",
+    "description": "Humanity's first blind computer",
+    "imageUrl": "https://i.postimg.cc/MK0LjjDG/empty-Song.png",
+    "demoUrl": "https://nillion.com/?utm_source=mini-app",
+    "githubUrl": null,
+    "creator": "nillion",
+    "hackathon": false
+  },
+  {
     "id": "private-ghilbi-image-generator",
     "name": "Private Ghilbi Image Generator",
     "category": "Consumer",
@@ -57,7 +68,7 @@
   {
     "id": "catch-the-data",
     "name": "Catch the Data",
-    "category": "Game",
+    "category": "Games",
     "description": "Catch the data games",
     "imageUrl": "https://i.postimg.cc/G3SmCBs4/Frame-9.png",
     "demoUrl": "https://x.com/_offmylawn/status/1899434177558147130",

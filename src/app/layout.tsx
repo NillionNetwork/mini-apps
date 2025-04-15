@@ -5,8 +5,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'App Showcase Gallery',
-  description: 'Interactive showcase of applications in a Cover Flow style interface',
+  title: 'Nillion Mini App Gallery',
+  description: 'Interactive showcase of Nillion apps',
 };
 
 export default function RootLayout({
@@ -15,11 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={inter.className}>
-        <main className="min-h-screen p-4 md:p-8">
-          {children}
-        </main>
+        <main className='min-h-screen p-4 md:p-8'>{children}</main>
       </body>
     </html>
   );
