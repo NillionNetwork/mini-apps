@@ -80,7 +80,7 @@ export default function ITunesFrame({
             <h3 className='text-xs font-semibold text-[#798592] px-2 mb-2'>
               CATEGORIES
             </h3>
-            <div className='font-medium text-sm space-y-1 max-h-[400px] overflow-y-auto'>
+            <div className='font-medium text-sm space-y-1 overflow-y-auto'>
               {categories.map((category) => (
                 <div
                   key={category}
@@ -107,14 +107,6 @@ export default function ITunesFrame({
         <div>
           {totalItems} {totalItems === 1 ? 'item' : 'items'}
         </div>
-        {/* <div className='flex items-center space-x-1'>
-          <button className='w-6 h-6 flex items-center justify-center rounded hover:bg-gray-300'>
-            <span>🔄</span>
-          </button>
-          <button className='w-6 h-6 flex items-center justify-center rounded hover:bg-gray-300'>
-            <span>↓</span>
-          </button>
-        </div> */}
       </div>
     </div>
   );

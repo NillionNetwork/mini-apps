@@ -93,3 +93,9 @@
 - Implemented realistic depth effect with multiple shadow layers
 - Increased vertical margin to better showcase the new shadow effect
 - Refined overall window appearance for a more contemporary look
+
+
+## ToDO later
+- [ ] Creators
+- [ ] MultiCategory + Hackathon events
+- [ ] Description?

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "todo-app",
+    "name": "Task Manager Pro",
+    "category": "Productivity",
+    "description": "A sophisticated task management application with drag-and-drop functionality, recurring tasks, and intuitive UI.",
+    "imageUrl": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    "demoUrl": "https://example.com/task-manager-demo",
+    "githubUrl": "https://github.com/example/task-manager"
+  },
+  {
+    "id": "weather-app",
+    "name": "WeatherNow",
+    "category": "Utilities",
+    "description": "Real-time weather forecasting with beautiful visualizations and global coverage.",
+    "imageUrl": "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    "demoUrl": "https://example.com/weather-now-demo",
+    "githubUrl": "https://github.com/example/weather-now"
+  },
+  {
+    "id": "photo-gallery",
+    "name": "Pixel Perfect Gallery",
+    "category": "Media",
+    "description": "A responsive photo gallery with advanced filtering, lightbox view, and social sharing capabilities.",
+    "imageUrl": "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    "demoUrl": "https://example.com/pixel-gallery-demo",
+    "githubUrl": "https://github.com/example/pixel-gallery"
+  }
+]
