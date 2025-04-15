@@ -6,6 +6,8 @@ export interface AppData {
   imageUrl: string;
   demoUrl: string;
   githubUrl: string | null;
+  creator: [string];
+  hackathon: string;
 }
 
 export type Category = string;

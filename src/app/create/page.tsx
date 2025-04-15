@@ -137,7 +137,8 @@ export default function CreatePage() {
       const creators = e.target.value
         .split(',')
         .map((c) => c.trim())
-        .filter(Boolean); // Remove empty strings
+        .filter(Boolean);
+      //@ts-ignore
       setFormData((prev) => ({
         ...prev,
         creator: creators,
@@ -171,7 +172,7 @@ export default function CreatePage() {
       imageUrl: '', // Use empty string or a default placeholder URL
       demoUrl: '',
       githubUrl: '',
-      creator: [],
+      creator: ['null'],
       hackathon: '', // Add hackathon if it's part of your AppData type
     };
 
