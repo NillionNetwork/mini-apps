@@ -239,17 +239,8 @@ export default function CreatePage() {
   // === Render ===
   return (
     <div className='p-4 max-w-[90rem] mx-auto'>
-      {' '}
-      {/* Increased max-width */}
-      {/* Header */}
       <div className='flex justify-between items-center mb-6'>
         <h1 className='text-2xl font-bold'>Create</h1>
-        {/* <button
-          onClick={handleCopyJson}
-          className='bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded shadow'
-        >
-          Copy JSON to Clipboard
-        </button> */}
       </div>
       {/* Main Layout: Editor | Preview */}
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-4 '>
