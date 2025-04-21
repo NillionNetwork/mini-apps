@@ -7,6 +7,7 @@ import ITunesFrame from '@/components/ITunesFrame';
 import AppGallery from '@/components/AppGallery';
 import AppTable from '@/components/AppTable';
 import { AppData, Category } from '@/components/types'; // Import types
+import Footer from '@/components/Footer';
 
 // Define the categories - could also be dynamic like on home page if needed
 const AVAILABLE_CATEGORIES: Category[] = [
@@ -24,7 +25,7 @@ const AVAILABLE_CATEGORIES: Category[] = [
   'Nostalgia',
   'Productivity',
   'Utilities',
-  'Media', // Ensure all categories from JSON are here
+  'Media',
 ].sort();
 
 export default function CreatePage() {
@@ -229,14 +230,10 @@ export default function CreatePage() {
       }
     },
     [filteredAppsForPreview]
-  ); // Depend on filtered apps
+  );
 
-  // Handle category selection *within the preview pane*
   const handlePreviewCategorySelect = useCallback((category: string | null) => {
     setPreviewSelectedCategory(category);
-    // Optionally reset preview app selection when category changes?
-    // setPreviewSelectedAppId(null);
-    // setPreviewCurrentIndex(0);
   }, []);
 
   // === Render ===
@@ -246,16 +243,16 @@ export default function CreatePage() {
       {/* Increased max-width */}
       {/* Header */}
       <div className='flex justify-between items-center mb-6'>
-        <h1 className='text-2xl font-bold'>Gallery Editor</h1>
-        <button
+        <h1 className='text-2xl font-bold'>Create</h1>
+        {/* <button
           onClick={handleCopyJson}
           className='bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded shadow'
         >
           Copy JSON to Clipboard
-        </button>
+        </button> */}
       </div>
       {/* Main Layout: Editor | Preview */}
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-4 '>
         {/* --- Column 1: Editor Panel (App List + Form) --- */}
         <div className='flex flex-col gap-6'>
           {' '}
@@ -513,7 +510,13 @@ export default function CreatePage() {
                   </div>
 
                   {/* Save Button */}
-                  <div className='flex justify-end pt-4'>
+                  <div className='flex justify-between pt-4'>
+                    <button
+                      onClick={handleCopyJson}
+                      className='bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded shadow'
+                    >
+                      Copy JSON to Clipboard
+                    </button>
                     <button
                       type='button' // Use type="button" if not submitting a form traditionally
                       onClick={handleSaveApp}
@@ -587,6 +590,7 @@ export default function CreatePage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
