@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react'; // Import useCallback
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useDragControls, useMotionValue } from 'framer-motion';
@@ -24,12 +24,43 @@ export default function AppGallery({
   const dragControls = useDragControls();
   const x = useMotionValue(0);
 
-  // Update active index when currentIndex changes
+  // Update active index when currentIndex changes externally
   useEffect(() => {
     if (currentIndex !== activeIndex) {
       setActiveIndex(currentIndex);
     }
   }, [currentIndex, activeIndex]);
+
+  const handleItemSelect = useCallback(
+    (index: number) => {
+      if (index >= 0 && index < apps.length) {
+        setActiveIndex(index);
+        onSelectApp(apps[index]);
+      }
+    },
+    [apps, onSelectApp, setActiveIndex]
+  );
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        // Navigate to the previous app if possible
+        handleItemSelect(activeIndex - 1);
+      } else if (event.key === 'ArrowRight') {
+        // Navigate to the next app if possible
+        handleItemSelect(activeIndex + 1);
+      }
+    };
+
+    // Add event listener when the component mounts
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Remove event listener when the component unmounts
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeIndex, handleItemSelect]); // Dependencies for useEffect
+  // --- End Keyboard Navigation Effect ---
 
   // Handle when no apps are available
   if (apps.length === 0) {
@@ -48,24 +79,21 @@ export default function AppGallery({
 
     if (info.offset.x > threshold && activeIndex > 0) {
       // Dragged right - go to previous
-      setActiveIndex(activeIndex - 1);
-      onSelectApp(apps[activeIndex - 1]);
+      handleItemSelect(activeIndex - 1); // Use the stable function
     } else if (info.offset.x < -threshold && activeIndex < apps.length - 1) {
       // Dragged left - go to next
-      setActiveIndex(activeIndex + 1);
-      onSelectApp(apps[activeIndex + 1]);
+      handleItemSelect(activeIndex + 1); // Use the stable function
     }
   };
 
-  const handleItemClick = (index: number) => {
-    setActiveIndex(index);
-    onSelectApp(apps[index]);
-  };
+  const handleItemClick = handleItemSelect;
 
   return (
     <div
       ref={containerRef}
-      className='relative h-96 md:h-[22rem] overflow-hidden rounded-lg overflow-y-auto max-h-screen'
+      className='relative h-96 md:h-[22rem] overflow-hidden rounded-lg overflow-y-auto max-h-screen outline-none' // Added outline-none if using tabIndex later
+      // tabIndex={0} // Optional: Add this to make the div focusable
+      // onKeyDown={handleKeyDown} // Optional: Use this instead of window listener if tabIndex is added
     >
       {/* Reflection floor - iTunes style with enhanced reflections */}
       <div className='absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-gray-900 to-transparent opacity-60 pointer-events-none z-0' />
@@ -91,7 +119,7 @@ export default function AppGallery({
                 className='absolute cursor-pointer'
                 animate={{
                   x: `${distance * 60}%`,
-                  rotateY: distance * 60, // More rotation for iTunes-like effect
+                  rotateY: distance * 60,
                   scale: 1 - Math.min(0.3, Math.abs(distance) * 0.15),
                   zIndex: apps.length - Math.abs(distance),
                   filter: `brightness(${
@@ -99,12 +127,19 @@ export default function AppGallery({
                   })`,
                 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                onClick={() => handleItemClick(index)}
+                onClick={() => handleItemClick(index)} // Use the renamed/reused handler
               >
                 <Link
                   href={app.demoUrl}
                   target='_blank'
                   rel='noopener noreferrer'
+                  // Prevent link navigation when only using arrow keys
+                  onClick={(e) => {
+                    // Allow click navigation, but check if triggered by keyboard?
+                    // This setup is tricky. Often keyboard nav selects, Enter activates.
+                    // For now, we'll keep the Link behavior as is.
+                    // If you want Enter to navigate, that's a separate key listener.
+                  }}
                 >
                   <div
                     className='relative rounded overflow-hidden transition-shadow'
@@ -126,7 +161,7 @@ export default function AppGallery({
                       priority={Math.abs(distance) < 2}
                     />
 
-                    {/* Enhanced Reflection effect - more pronounced */}
+                    {/* Enhanced Reflection effect */}
                     <div
                       className='absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-white to-transparent opacity-25 transform scale-y-[-1] origin-bottom backdrop-blur-sm'
                       style={{
@@ -136,7 +171,6 @@ export default function AppGallery({
                           'linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.3) 50%, rgba(0,0,0,0))',
                       }}
                     >
-                      {/* Reflection image */}
                       <div className='w-full h-full relative transform scale-y-[-1]'>
                         <Image
                           src={
@@ -152,12 +186,12 @@ export default function AppGallery({
                       </div>
                     </div>
 
-                    {/* Overlay for non-active items to make them less prominent */}
+                    {/* Overlay for non-active items */}
                     {index !== activeIndex && (
                       <div className='absolute inset-0 bg-black bg-opacity-50' />
                     )}
 
-                    {/* App name overlay at bottom */}
+                    {/* App name overlay */}
                     <div className='absolute bottom-0 inset-x-0 bg-black bg-opacity-70 p-3'>
                       <h3 className='text-white font-medium text-center truncate'>
                         {app.name}
@@ -173,23 +207,29 @@ export default function AppGallery({
 
       <div className='w-full h-6' />
 
-      {/* Slider control - like iTunes */}
-      <div className='absolute bottom-3 left-1/2 transform -translate-x-1/2 w-3/4 max-w-lg'>
-        <div className='relative h-1 bg-gray-700 rounded-full'>
-          <div className='absolute inset-y-0 left-0 right-0'>
-            <div
-              className='absolute top-1/2 transform -translate-y-1/2 h-3 w-3 bg-white rounded-full shadow-md border border-gray-600'
-              style={{ left: `${(activeIndex / (apps.length - 1)) * 100}%` }}
-            />
+      {/* Slider control */}
+      {apps.length > 1 && ( // Hide slider if only one app
+        <div className='absolute bottom-3 left-1/2 transform -translate-x-1/2 w-3/4 max-w-lg'>
+          <div className='relative h-1 bg-gray-700 rounded-full'>
+            <div className='absolute inset-y-0 left-0 right-0'>
+              <motion.div // Animate the slider handle
+                className='absolute top-1/2 transform -translate-y-1/2 h-3 w-3 bg-white rounded-full shadow-md border border-gray-600'
+                animate={{
+                  // Use animate prop for smooth transition
+                  left: `${(activeIndex / (apps.length - 1)) * 100}%`,
+                }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }} // Match item transition
+              />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Left/Right navigation arrows */}
       {activeIndex > 0 && (
         <button
-          className='absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black bg-opacity-50 rounded-full flex items-center justify-center text-white hover:bg-opacity-70 transition-colors'
-          onClick={() => handleItemClick(activeIndex - 1)}
+          className='absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black bg-opacity-50 rounded-full flex items-center justify-center text-white hover:bg-opacity-70 transition-colors z-10' // Ensure buttons are above items
+          onClick={() => handleItemClick(activeIndex - 1)} // Use the renamed/reused handler
           aria-label='Previous app'
         >
           ←
@@ -198,8 +238,8 @@ export default function AppGallery({
 
       {activeIndex < apps.length - 1 && (
         <button
-          className='absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black bg-opacity-50 rounded-full flex items-center justify-center text-white hover:bg-opacity-70 transition-colors'
-          onClick={() => handleItemClick(activeIndex + 1)}
+          className='absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black bg-opacity-50 rounded-full flex items-center justify-center text-white hover:bg-opacity-70 transition-colors z-10' // Ensure buttons are above items
+          onClick={() => handleItemClick(activeIndex + 1)} // Use the renamed/reused handler
           aria-label='Next app'
         >
           →
