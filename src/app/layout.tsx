@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: 'Interactive showcase of Nillion apps',
 };
 
+// Chore: test
 export default function RootLayout({
   children,
 }: {
