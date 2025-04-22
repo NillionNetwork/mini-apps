@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Footer = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
-      <p className='mb-4 text-gray-300 italic font-md'>
+      <p className='mb-4 text-gray-300 italic font-md text-center'>
         Use the L and R arrow keys to navigate between the gallery (Desktop).
       </p>
       <div className='flex'>
