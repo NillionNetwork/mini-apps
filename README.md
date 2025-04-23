@@ -2,6 +2,9 @@
 
 An interactive web component that displays applications in a Cover Flow-like interface, inspired by the classic iTunes Cover Flow. Built with Next.js, Framer Motion for animations, and Tailwind CSS for styling.
 
+<img width="1701" alt="Screenshot 2025-04-23 at 10 37 09" src="https://github.com/user-attachments/assets/5b6d5efb-493c-4272-b012-155377006ad6" />
+
+
 ## Features
 
 - Cover Flow gallery view with smooth animations and transitions
