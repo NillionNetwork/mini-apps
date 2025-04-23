@@ -236,7 +236,6 @@ export default function CreatePage() {
     setPreviewSelectedCategory(category);
   }, []);
 
-  // === Render ===
   return (
     <div className='p-4 max-w-[90rem] mx-auto'>
       <div className='flex justify-between items-center mb-6'>
@@ -348,7 +347,7 @@ export default function CreatePage() {
                       htmlFor={`name-${currentAppId}`}
                       className='block text-sm font-medium mb-1'
                     >
-                      Name
+                      Name*
                     </label>
                     <input
                       id={`name-${currentAppId}`}
@@ -367,21 +366,16 @@ export default function CreatePage() {
                       htmlFor={`category-${currentAppId}`}
                       className='block text-sm font-medium mb-1'
                     >
-                      Category
+                      Category*
                     </label>
-                    <select
+                    <input
                       id={`category-${currentAppId}`}
+                      type='text'
                       name='category'
                       value={formData.category || ''}
                       onChange={handleFormChange}
-                      className='w-full p-2 border rounded bg-white focus:ring-blue-500 focus:border-blue-500'
-                    >
-                      {AVAILABLE_CATEGORIES.map((cat) => (
-                        <option key={cat} value={cat}>
-                          {cat}
-                        </option>
-                      ))}
-                    </select>
+                      className='w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500'
+                    />
                   </div>
 
                   {/* Description */}
@@ -408,7 +402,8 @@ export default function CreatePage() {
                       htmlFor={`imageUrl-${currentAppId}`}
                       className='block text-sm font-medium mb-1'
                     >
-                      Image URL
+                      Image URL (Has to be an image uploaded to
+                      https://i.postimg.cc or left blank)
                     </label>
                     <input
                       id={`imageUrl-${currentAppId}`}
@@ -446,55 +441,15 @@ export default function CreatePage() {
                       htmlFor={`demoUrl-${currentAppId}`}
                       className='block text-sm font-medium mb-1'
                     >
-                      Demo URL
+                      Demo URL*
                     </label>
                     <input
                       id={`demoUrl-${currentAppId}`}
                       type='url'
                       name='demoUrl'
+                      required
                       placeholder='https://...'
                       value={formData.demoUrl || ''}
-                      onChange={handleFormChange}
-                      className='w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500'
-                    />
-                  </div>
-
-                  {/* Creators */}
-                  <div>
-                    <label
-                      htmlFor={`creators-${currentAppId}`}
-                      className='block text-sm font-medium mb-1'
-                    >
-                      Creators (comma separated)
-                    </label>
-                    <input
-                      id={`creators-${currentAppId}`}
-                      type='text'
-                      name='creator' // Name matches state structure
-                      value={
-                        Array.isArray(formData.creator)
-                          ? formData.creator.join(', ')
-                          : ''
-                      }
-                      onChange={handleCreatorChange}
-                      placeholder='Alice, Bob...'
-                      className='w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500'
-                    />
-                  </div>
-
-                  {/* Hackathon */}
-                  <div>
-                    <label
-                      htmlFor={`hackathon-${currentAppId}`}
-                      className='block text-sm font-medium mb-1'
-                    >
-                      Hackathon
-                    </label>
-                    <input
-                      id={`hackathon-${currentAppId}`}
-                      type='text'
-                      name='hackathon'
-                      value={formData.hackathon || ''}
                       onChange={handleFormChange}
                       className='w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500'
                     />

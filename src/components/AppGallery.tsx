@@ -133,7 +133,9 @@ export default function AppGallery({
                   href={app.demoUrl}
                   target='_blank'
                   rel='noopener noreferrer'
-                  // Prevent link navigation when only using arrow keys
+                  data-umami-event='View Project'
+                  data-umami-event-id={app.id}
+                  // TODO: remove if unncessary?
                   onClick={(e) => {
                     // Allow click navigation, but check if triggered by keyboard?
                     // This setup is tricky. Often keyboard nav selects, Enter activates.
@@ -208,17 +210,16 @@ export default function AppGallery({
       <div className='w-full h-6' />
 
       {/* Slider control */}
-      {apps.length > 1 && ( // Hide slider if only one app
+      {apps.length > 1 && (
         <div className='absolute bottom-3 left-1/2 transform -translate-x-1/2 w-3/4 max-w-lg'>
           <div className='relative h-1 bg-gray-700 rounded-full'>
             <div className='absolute inset-y-0 left-0 right-0'>
-              <motion.div // Animate the slider handle
+              <motion.div //
                 className='absolute top-1/2 transform -translate-y-1/2 h-3 w-3 bg-white rounded-full shadow-md border border-gray-600'
                 animate={{
-                  // Use animate prop for smooth transition
                   left: `${(activeIndex / (apps.length - 1)) * 100}%`,
                 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }} // Match item transition
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               />
             </div>
           </div>
@@ -229,7 +230,7 @@ export default function AppGallery({
       {activeIndex > 0 && (
         <button
           className='absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black bg-opacity-50 rounded-full flex items-center justify-center text-white hover:bg-opacity-70 transition-colors z-10' // Ensure buttons are above items
-          onClick={() => handleItemClick(activeIndex - 1)} // Use the renamed/reused handler
+          onClick={() => handleItemClick(activeIndex - 1)}
           aria-label='Previous app'
         >
           ←
@@ -239,7 +240,7 @@ export default function AppGallery({
       {activeIndex < apps.length - 1 && (
         <button
           className='absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black bg-opacity-50 rounded-full flex items-center justify-center text-white hover:bg-opacity-70 transition-colors z-10' // Ensure buttons are above items
-          onClick={() => handleItemClick(activeIndex + 1)} // Use the renamed/reused handler
+          onClick={() => handleItemClick(activeIndex + 1)}
           aria-label='Next app'
         >
           →
