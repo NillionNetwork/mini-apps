@@ -50,7 +50,7 @@ export default function ITunesFrame({
         </div>
 
         <div className='flex-1 text-center text-gray-700 font-medium'>
-          Nillion Mini Apps
+          Nillion Mini App
         </div>
       </div>
 

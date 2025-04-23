@@ -236,7 +236,6 @@ export default function CreatePage() {
     setPreviewSelectedCategory(category);
   }, []);
 
-  // === Render ===
   return (
     <div className='p-4 max-w-[90rem] mx-auto'>
       <div className='flex justify-between items-center mb-6'>
