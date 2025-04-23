@@ -44,3 +44,19 @@ An interactive web component that displays applications in a Cover Flow-like int
 ## Customization
 
 To add or modify applications, edit the `public/apps-data.json` file following the existing schema.
+
+## Contribution
+- In order to get your Nillion app added to the application, make a PR request to `public/apps-data.json` with the following fields
+```
+  {
+    "id": "autonomousyield",
+    "name": "AutonomousYield",
+    "category": "XXX",
+    "description": "XXX",
+    "imageUrl": null, // optional - if if you want to add an image, upload it via i.postimg.cc as per the next.config.js file
+    "demoUrl": "XXX",
+    "githubUrl": "XXX",
+    "creator": ["XXX"],
+    "hackathon": "XXX" // optional - if no hackathon, just add false
+  }
+```
