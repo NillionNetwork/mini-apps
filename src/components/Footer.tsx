@@ -4,8 +4,11 @@ import Link from 'next/link';
 const Footer = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
-      <p className='mb-4 text-gray-300 italic font-md'>
+      <p className='mb-4 text-gray-300 italic font-md text-center hidden md:block'>
         Use the L and R arrow keys to navigate between the gallery (Desktop).
+      </p>
+      <p className='mb-4 text-gray-300 italic font-md text-center md:hidden'>
+        Swipe left or right to navigate between the gallery (Mobile).
       </p>
       <div className='flex'>
         <Link

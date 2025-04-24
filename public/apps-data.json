@@ -128,6 +128,17 @@
     "hackathon": false
   },
   {
+    "id": "songs-of-innocence",
+    "name": "Songs of Innocence",
+    "category": "Nostalgia",
+    "description": "Songs of Innocence by U2",
+    "imageUrl": "https://i.postimg.cc/wBQ8qxpq/songs-innocence.jpg",
+    "demoUrl": "https://www.youtube.com/watch?v=y_tRjMiJq_c&list=PLMgbbHTtHrwaUhwDAhV0AiF5KAhx9xKY_",
+    "githubUrl": null,
+    "creator": ["U2"],
+    "hackathon": false
+  },
+  {
     "id": "aggy",
     "name": "Aggy",
     "category": "DevTools",
@@ -663,7 +674,7 @@
     "category": "zk",
     "description": "To fill later",
     "imageUrl": null,
-    "demoUrl": "https://ethglobal.com/showcase/stealthfi-yxtoi",
+    "demoUrl": "https://ethglobal.com/showcase/stealthfi-yxioi",
     "githubUrl": "https://github.com/hrishi0102/StealthFi",
     "creator": ["Hrishikeshhhh__"],
     "hackathon": "EthGlobal Agentic"
