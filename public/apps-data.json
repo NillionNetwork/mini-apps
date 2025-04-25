@@ -11,70 +11,14 @@
     "hackathon": false
   },
   {
-    "id": "private-ghilbi-image-generator",
-    "name": "Private Ghilbi Image Generator",
-    "category": "Consumer",
-    "description": "Generate anime images privately",
-    "imageUrl": "https://i.postimg.cc/85ZPscKn/Frame-4.png",
-    "demoUrl": "https://x.com/nillionnetwork/status/1905605881821364287",
-    "githubUrl": null,
-    "creator": ["crypblizz"],
-    "hackathon": false
-  },
-  {
     "id": "stella",
     "name": "Stella",
     "category": "AI",
     "description": "Brainrot Bestie",
     "imageUrl": "https://i.postimg.cc/vZnBXQTc/Frame-1.png",
-    "demoUrl": "https://x.com/0ceans404/status/1895289992081219870",
+    "demoUrl": "https://askstella.vercel.app",
     "githubUrl": null,
     "creator": ["oceans404"],
-    "hackathon": false
-  },
-
-  {
-    "id": "nexpenses",
-    "name": "nExpenses",
-    "category": "Finance",
-    "description": "Private Expenses Platform",
-    "imageUrl": "https://i.postimg.cc/CKVKQWnJ/Frame-2.png",
-    "demoUrl": "https://x.com/crypblizz/status/1902362629362090043",
-    "githubUrl": null,
-    "creator": ["crypblizz"],
-    "hackathon": false
-  },
-  {
-    "id": "noogle",
-    "name": "noogle",
-    "category": "Consumer",
-    "description": "Private AI Translator",
-    "imageUrl": "https://i.postimg.cc/zfSfZ0nN/Frame-5.png",
-    "demoUrl": "https://x.com/crypblizz/status/1899105258749542828",
-    "githubUrl": null,
-    "creator": ["crypblizz"],
-    "hackathon": false
-  },
-  {
-    "id": "blindnak",
-    "name": "Blindnak",
-    "category": "Consumer",
-    "description": "Private Prediction market on Monad",
-    "imageUrl": "https://i.postimg.cc/3R8xKmBv/Frame-6.png",
-    "demoUrl": "https://x.com/crypblizz/status/1895194841019228385",
-    "githubUrl": null,
-    "creator": ["crypblizz"],
-    "hackathon": false
-  },
-  {
-    "id": "cypherchat",
-    "name": "CypherChat",
-    "category": "Consumer",
-    "description": "Private AI Chat",
-    "imageUrl": "https://i.postimg.cc/kXp6f1yh/Frame-3.png",
-    "demoUrl": "https://x.com/crypblizz/status/1886424546267267568",
-    "githubUrl": "N/A",
-    "creator": ["crypblizz"],
     "hackathon": false
   },
   {
@@ -99,7 +43,6 @@
     "creator": ["oceans404"],
     "hackathon": false
   },
-
   {
     "id": "walletsheet",
     "name": "WalletSheet",
