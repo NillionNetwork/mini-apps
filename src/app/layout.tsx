@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Script from 'next/script';
+import ClientScript from '../components/ClientScript';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inter.className}>
         <main className='min-h-screen p-4 md:p-8'>{children}</main>
+        <ClientScript />
         <Script
           defer
           src='https://cloud.umami.is/script.js'
